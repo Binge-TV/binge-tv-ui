@@ -16,7 +16,6 @@ const ShowList = (props) => {
                 <div className='icon-container'>
                     {shows.map((showTitle) => (
                         <p>
-
                             {showTitle}
                         </p>
                     ))}

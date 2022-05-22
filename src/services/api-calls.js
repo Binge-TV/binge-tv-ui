@@ -2,10 +2,10 @@
 // const baseUrl = "http://www.omdbapi.com/?t=";
 // const endUrl = "&apikey=b0222fd4"
 
-// // export function getShowList() {
-// //     return fetch(`${baseUrl}${query}&apikey=b0222fd4`)
-// //     .then(res => res.json())
-// // }
+// export function getShowList() {
+//     return fetch(`${baseUrl}${query}&apikey=b0222fd4`)
+//     .then(res => res.json())
+// }
 
 // export function showSearch(formData) {
 //     return fetch(`${baseUrl}${formData.query}${endUrl}`)
@@ -24,5 +24,4 @@ const baseUrl = "https://api.themoviedb.org/3/search/tv?api_key=360683f667d468ee
 export function showSearch(formData) {
     return fetch(`${baseUrl}${formData.query}`,{})
     .then(res => res.json())
-    
 }
