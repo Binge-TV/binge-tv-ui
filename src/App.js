@@ -3,7 +3,7 @@ import { Routes, Route, } from 'react-router-dom'
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import ShowList from './pages/ShowList/ShowList';
-
+import ShowSearch from './pages/ShowSearch/ShowSearch';
 
 
 function App() {
@@ -16,7 +16,8 @@ function App() {
 	<>
 		<NavBar navItems={navItems} />
 		<Routes> 
-			<Route path="/show-list" element={<ShowList />}/>
+			<Route path="/show-list" element={<ShowList />} />
+      <Route path="/show-search" element={<ShowSearch />} />
 		</Routes>
 	</>
   );

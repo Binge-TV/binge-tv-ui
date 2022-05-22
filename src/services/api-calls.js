@@ -1,7 +1,8 @@
 
 const baseUrl = "http://www.omdbapi.com/?t=";
-let query;
+let query="";
 
 export function getShowList() {
-    return fetch(`${baseUrl}${query}{process.env.REACT_APP_API_KEY}`)
+    return fetch(`${baseUrl}${query}&apikey=b0222fd4`)
+    .then(res => res.json())
 }

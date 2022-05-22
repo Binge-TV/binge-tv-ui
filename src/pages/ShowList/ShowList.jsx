@@ -1,7 +1,14 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
+import { getShowList } from '../../services/api-calls';
 
 const ShowList = (props) => {
     const [shows, setShows] = useState();
+
+    useEffect(() => {
+        getShowList()
+        .then(showData => setShows(showData.results))
+    },[])
+    
     return ( 
         <>
             <div>
