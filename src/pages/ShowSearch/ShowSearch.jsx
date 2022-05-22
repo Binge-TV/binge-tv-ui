@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import { showSearch } from "../../services/api-calls";
+import ShowCard from "../../components/ShowCard/ShowCard";
 
 const ShowSearch = (props) => {
     const [shows, setShows] = useState([])
@@ -20,10 +21,10 @@ const ShowSearch = (props) => {
         {shows.length ? 
         <>
             {shows.map(show => 
-                <div key={show.id}>
-                    <img src={`${BASE_URL}${show.backdrop_path}`} alt={`${show.name}`}  /><br/>
-                    {show.name}
-                </div>
+            <ShowCard
+               show={show}
+               key={show.id}
+               />
             )}
             </>    
             :
