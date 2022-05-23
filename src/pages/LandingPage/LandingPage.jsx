@@ -1,3 +1,5 @@
+import LoginForm from "../../components/LoginForm/LoginForm";
+import SignupForm from "../../components/SignupForm/SignupForm";
 
 
 const LandingPage = () => {
@@ -6,6 +8,8 @@ const LandingPage = () => {
         <h1>
             Binge [TV]
         </h1>
+            <LoginForm />
+            <SignupForm />
         </>
      );
 }

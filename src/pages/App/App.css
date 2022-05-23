@@ -4,18 +4,13 @@ body {
 
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
   border-radius: 50%;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 10s linear;
-  }
 }
 
 .icon-container {
@@ -37,7 +32,7 @@ body {
 }
 
 .App-header {
-  background-color: #b3ccff;
+  
   min-height: 5vh;
   display: flex;
   flex-direction: row;

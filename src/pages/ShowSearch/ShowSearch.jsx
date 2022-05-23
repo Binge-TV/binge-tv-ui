@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import { showSearch } from "../../services/api-calls";
 import ShowCard from "../../components/ShowCard/ShowCard";
+import NavBar from "../../components/NavBar/NavBar";
 
 const ShowSearch = (props) => {
     const [shows, setShows] = useState([])
@@ -15,6 +16,7 @@ const ShowSearch = (props) => {
     }
     return ( 
         <>
+        <NavBar navItems={props.navItems} />
         <h3>TV Shows</h3>
         <SearchForm handleShowSearch={handleShowSearch} />
         {console.log(shows)}
