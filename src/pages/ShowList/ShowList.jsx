@@ -15,6 +15,7 @@ const ShowList = (props) => {
                 <h3>Show List</h3>
                 <div className='icon-container'>
                     {shows.map((showTitle) => (
+                        
                         <p>
                             {showTitle}
                         </p>

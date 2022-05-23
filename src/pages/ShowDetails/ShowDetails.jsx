@@ -18,9 +18,9 @@ const ShowDetails = (props) => {
             { showDetails.name ?
             <>
             <h1>{showDetails.name}</h1>
-            <img src="#" alt={showDetails.name} />
+            <p>Country of origin: <strong>{showDetails.origin_country[0]}</strong></p>
+            <img src={`https://image.tmdb.org/t/p/w500${showDetails.poster_path}`} alt={showDetails.name} />
             <p>{showDetails.overview}</p><br/>
-            <p>{showDetails.origin_country[0]}</p>
             </>
             :
             <p>No Show Found</p>
