@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getShowDetails } from '../../services/api-calls';
+import NavBar from '../../components/NavBar/NavBar';
 
 
 const ShowDetails = (props) => {
@@ -10,10 +11,11 @@ const ShowDetails = (props) => {
     useEffect(()=> {
         getShowDetails(showName)
         .then(showData => setShowDetails(showData))
-    },[])
+    },[showName])
 
     return ( 
         <>
+        <NavBar navItems={props.navItems}/>
             <h3>Show Details</h3>
             { showDetails.name ?
             <>

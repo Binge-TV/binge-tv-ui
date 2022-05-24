@@ -1,13 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = (props) => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({ email: "" }, { password: "" });
   const [message, setMessage] = useState("");
 
   const userValidation = () => {
     const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
-    if (regEx.test(formData.email)) {
-      setMessage("Email is Valid");
+    if (regEx.test(formData.email) && formData.password !== "") {
+     setMessage("Welcome to Binged [TV]")
+      navigate('/show-search')
     } else if (!regEx.test(formData.email) && formData.email !== "") {
       setMessage("Email is Not Valid");
     } else {
@@ -25,7 +28,9 @@ const LoginForm = (props) => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form 
+      autoComplete="off"
+      onSubmit={handleSubmit}>
         <table>
           <tr>
             <th>Login</th>
@@ -39,7 +44,7 @@ const LoginForm = (props) => {
               <input
                 name="email"
                 type="email"
-                autoComplete="off"
+                autoComplete="disabled"
                 value={formData.email}
                 onChange={handleChange}
               />
@@ -54,13 +59,15 @@ const LoginForm = (props) => {
             <input
               name="password"
               type="password"
-              autoComplete="off"
+              autoComplete="disabled"
               value={formData.password}
               onChange={handleChange}
             />
           </td>
           <tr>
-            <button onClick={userValidation}>Login</button>
+            <button 
+           
+            onClick={userValidation}>Login</button>
           </tr>
           <tr>
             <p className="message">{message}</p>

@@ -5,9 +5,12 @@ import SignupForm from "../../components/SignupForm/SignupForm";
 const LandingPage = () => {
     return ( 
         <>
-        <h1>
-            Binge [TV]
-        </h1>
+        <img
+                src="/images/logo.png"
+                style={{ width: "500px", height: "500px"}}
+                className="App-logo"
+                alt="logo"
+                />
             <LoginForm />
             <SignupForm />
         </>

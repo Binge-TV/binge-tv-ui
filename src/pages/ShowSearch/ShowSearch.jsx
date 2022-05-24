@@ -6,7 +6,6 @@ import NavBar from "../../components/NavBar/NavBar";
 
 const ShowSearch = (props) => {
     const [shows, setShows] = useState([])
-    const BASE_URL = 'https://image.tmdb.org/t/p/w500/'
 
     const handleShowSearch = formData => {
         showSearch(formData)

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from 'react-router-dom'
 
 const SignupForm = (props) => {
     
@@ -20,7 +19,7 @@ const SignupForm = (props) => {
 
       const handleSubmit = async e => {
         e.preventDefault()
-         
+        
       }
     
       const { name, gender, email, password, passwordConf } = formData
@@ -39,7 +38,7 @@ const SignupForm = (props) => {
             <label htmlFor="name" >Name</label>
             <input
               type="text"
-              autoComplete="off"
+              autoComplete="disabled"
               id="name"
               value={name}
               name="name"
@@ -49,11 +48,14 @@ const SignupForm = (props) => {
           <div >
           <label htmlFor="gender" >Gender</label>
           <select
+            autoComplete="disabled"
             type="text"
             id="gender"
             name="gender"
+            
             onChange={handleChange}
           >
+              <option value="none" selected disabled hidden>Select a Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Non-Binary">Non-Binary</option>
@@ -64,7 +66,7 @@ const SignupForm = (props) => {
             <label htmlFor="email" >Email</label>
             <input
               type="text"
-              autoComplete="off"
+              autoComplete="disabled"
               id="email"
               value={email}
               name="email"
@@ -75,7 +77,7 @@ const SignupForm = (props) => {
             <label htmlFor="password">Password</label>
             <input
               type="password"
-              autoComplete="off"
+              autoComplete="disabled"
               id="password"
               value={password}
               name="password"
@@ -88,7 +90,7 @@ const SignupForm = (props) => {
             </label>
             <input
               type="password"
-              autoComplete="off"
+              autoComplete="disabled"
               id="confirm"
               value={passwordConf}
               name="passwordConf"
@@ -99,9 +101,7 @@ const SignupForm = (props) => {
             <button disabled={isFormInvalid()} >
               Sign Up
             </button>
-            <Link to="/show-search">
               <button>Cancel</button>
-            </Link>
           </div>
         </form>
       )
