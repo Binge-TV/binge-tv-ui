@@ -18,6 +18,7 @@ const LoginForm = (props) => {
     }
   };
 
+
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
@@ -68,6 +69,7 @@ const LoginForm = (props) => {
             <button 
            
             onClick={userValidation}>Login</button>
+            <button onClick={()=> window.location.reload()}>Cancel</button>
           </tr>
           <tr>
             <p className="message">{message}</p>
