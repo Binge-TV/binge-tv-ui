@@ -23,8 +23,12 @@ const SearchForm = (props) => {
             autoComplete="off"
             value={formData.query}
             onChange={handleChange}
+            placeholder="Search for show"
             />
-            <button style={{border: 'none', margin: 0, backgroundColor: '#f6afb3', color: '#fee8ea', fontSize: '22px', height: '56px' , padding: 0 }} type="submit">Search</button>
+            <button 
+            style={{border: 'none', margin: 0, backgroundColor: '#f6afb3',
+             color: '#fee8ea', fontSize: '22px', height: '56px' , padding: 0 }} 
+             type="submit">Search</button>
           </form>
         </div>
       </>

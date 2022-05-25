@@ -17,9 +17,8 @@ const ShowSearch = (props) => {
     return ( 
         <>
         <NavBar navItems={props.navItems} />
-        <h3>TV Shows</h3>
+        {/* <h3>TV Shows</h3> */}
         <SearchForm handleShowSearch={handleShowSearch} />
-        {console.log(shows)}
         {shows.length ? 
         <>
             {shows.map(show => 
@@ -30,7 +29,7 @@ const ShowSearch = (props) => {
             )}
             </>    
             :
-            <h3>Please search for a show</h3>
+            <h3>no shows found</h3>
             }
         </>
      );

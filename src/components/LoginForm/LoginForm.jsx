@@ -2,22 +2,21 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = (props) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "" }, { password: "" });
   const [message, setMessage] = useState("");
 
   const userValidation = () => {
     const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
     if (regEx.test(formData.email) && formData.password !== "") {
-     setMessage("Welcome to Binged [TV]")
-      navigate('/show-search')
+      setMessage("Welcome to Binged [TV]");
+      navigate("/show-search");
     } else if (!regEx.test(formData.email) && formData.email !== "") {
       setMessage("Email is Not Valid");
     } else {
       setMessage("");
     }
   };
-
 
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -29,16 +28,13 @@ const LoginForm = (props) => {
   };
   return (
     <>
-      <form 
-      autoComplete="off"
-      onSubmit={handleSubmit}>
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <table>
           <tr>
             <th>Login</th>
           </tr>
           <tr>
             <td>
-              {" "}
               <label htmlFor="">Email:</label>{" "}
             </td>
             <td>
@@ -51,9 +47,7 @@ const LoginForm = (props) => {
               />
             </td>
           </tr>
-          <tr></tr>
           <td>
-            {" "}
             <label htmlFor="">Password:</label>
           </td>
           <td>
@@ -66,10 +60,8 @@ const LoginForm = (props) => {
             />
           </td>
           <tr>
-            <button 
-           
-            onClick={userValidation}>Login</button>
-            <button onClick={()=> window.location.reload()}>Cancel</button>
+            <button onClick={userValidation}>Login</button>
+            <button onClick={() => window.location.reload()}>Cancel</button>
           </tr>
           <tr>
             <p className="message">{message}</p>

@@ -17,16 +17,22 @@ const ShowDetails = (props) => {
         <>
         <NavBar navItems={props.navItems}/>
             <h3>Show Details</h3>
+            <div className='show-details'>
             { showDetails.name ?
             <>
             <h1>{showDetails.name}</h1>
-            <p>Country of origin: <strong>{showDetails.origin_country[0]}</strong></p>
+            {showDetails.origin_country[0] ? 
+            <p>Country of origin: <strong>{showDetails.origin_country[0]}</strong></p> :
+            <p>Country of origin: <strong>Sorry no signal</strong></p>}
+            {showDetails.poster_path ? 
             <img src={`https://image.tmdb.org/t/p/w500${showDetails.poster_path}`} alt={showDetails.name} />
+            : <img src='/images/showPlaceHolder.png' alt={showDetails.name} />}
             <p>{showDetails.overview}</p><br/>
             </>
             :
             <p>No Show Found</p>
             }
+            </div>
         </>
        )
 }
