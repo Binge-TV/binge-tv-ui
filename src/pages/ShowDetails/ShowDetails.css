@@ -1,4 +1,11 @@
 .show-details {
     margin: auto;
     width: 80vh;
+    line-height: 40px;
+    
+}
+
+p{
+    line-height: 20px;
+    text-align: center;
 }

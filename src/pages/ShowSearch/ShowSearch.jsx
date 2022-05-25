@@ -31,7 +31,9 @@ const ShowSearch = (props) => {
          </section>
             </>    
             :
-            <h3>no shows found</h3>
+            <div>
+                <h3 style={{textAlign: 'center'}}>no shows found</h3>
+            </div>
             }
         </>
      );
