@@ -7,6 +7,8 @@ const LoginForm = (props) => {
   const [message, setMessage] = useState("");
 
   const userValidation = () => {
+    //checks for email pattern to be correct ie cory@cory.com
+    //then pseudo logs in user to site using navigate hooks to search page
     const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
     if (regEx.test(formData.email) && formData.password !== "") {
       setMessage("Welcome to Binged [TV]");
@@ -18,10 +20,15 @@ const LoginForm = (props) => {
     }
   };
 
-  const handleChange = (evt) => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  const handleChange = (e) => {
+    //changing form values based on the event target
+    setFormData({
+      //spread operator to preserve the value of forms while updating values in state
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
-
+//re uses the handle submit function passed down thru props
   const handleSubmit = (evt) => {
     evt.preventDefault();
     props.handleShowSearch(formData);

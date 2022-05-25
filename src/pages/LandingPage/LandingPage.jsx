@@ -17,14 +17,13 @@ const LandingPage = () => {
                 alt="logo"
                 />
         </div>
+                {/* dynamically renders login and signup forms upon button press by setting state to display component */}
                 <div className="button-container">
                 {(isLogin) ? <LoginForm isLogin={isLogin}
                 setIsLogin={setIsLogin}/> : <button onClick={() => setIsLogin(!isLogin)}>Login</button>} 
                 {(isSignup) ?  <SignupForm isSignup={isSignup}
                 setIsSignup={isSignup}/> :<button onClick={() => setIsSignup(!isSignup)}>Sign Up</button> }
                 </div>
-              
-           
         </>
      );
 }

@@ -20,13 +20,15 @@ const ShowSearch = (props) => {
         {/* <h3>TV Shows</h3> */}
         <SearchForm handleShowSearch={handleShowSearch} />
         {shows.length ? 
-        <>
+        <> 
+         <section className="show-container" style={{margin: 'auto'}}>
             {shows.map(show => 
             <ShowCard
                show={show}
                key={show.id}
                />
             )}
+         </section>
             </>    
             :
             <h3>no shows found</h3>

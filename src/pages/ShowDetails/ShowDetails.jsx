@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getShowDetails } from '../../services/api-calls';
 import NavBar from '../../components/NavBar/NavBar';
-
+import './ShowDetails.css'
 
 const ShowDetails = (props) => {
     const [showDetails, setShowDetails] = useState({})
@@ -16,7 +16,6 @@ const ShowDetails = (props) => {
     return ( 
         <>
         <NavBar navItems={props.navItems}/>
-            <h3>Show Details</h3>
             <div className='show-details'>
             { showDetails.name ?
             <>

@@ -9,6 +9,7 @@ const NavBar = (props) => {
                 alt="logo"
                 />
             </div>
+            {/* renders navbar items passed down through props */}
             <div className='btn-container'>
             { props.navItems.map(( navItem, idx ) =>
                 <a className='button' key={idx} href={navItem.url}>{navItem.name}</a>

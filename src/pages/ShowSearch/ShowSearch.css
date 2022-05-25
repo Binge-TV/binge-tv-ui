@@ -1,0 +1,11 @@
+.show-container{
+    width: 350px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.show-container a {
+    width: 100%;
+}

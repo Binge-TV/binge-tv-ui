@@ -10,25 +10,29 @@ const SignupForm = (props) => {
   });
 
   const handleChange = (e) => {
+    //changing form values based on the event target
     setFormData({
+      //spread operator to preserve the value of forms while updating values in state
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e) => {
+    //nothing here yet will change when connected to back end
     e.preventDefault();
   };
 
   const { name, gender, email, password, passwordConf } = formData;
 
   const isFormInvalid = () => {
+    //checks to make sure all fields are filled and password matches confirmation
+    //used to keep button disabled until all match
     return !(name && gender && email && password && password === passwordConf);
   };
 
   return (
     <div>
-      <strong>Sign Up</strong>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <table>
           <tr>
