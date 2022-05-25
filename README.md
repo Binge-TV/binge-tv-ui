@@ -4,7 +4,7 @@
 # How to use
 sign up and log in then search for tv shows.
 Once shows are found click on the image or name and too see details of each show.
-
+[Click to launch](https://crice802.github.io/binge-tv-frontend/)
 ## WHY?!?!
 Ever want to be able to search for shows and currate a watch list and keep track of what you have watched? Mayb review them and see what others think?
 
