@@ -1,10 +1,10 @@
-import React from 'react'
+
 import NavBar from "../../components/NavBar/NavBar";
 
-const HomePage = () => {
+const HomePage = ({navItems}) => {
     return ( 
         <>
-        <NavBar />
+        <NavBar navItems={navItems}/>
         <h1>Placeholder HomePage</h1>
         </>
      );

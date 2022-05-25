@@ -5,6 +5,8 @@ import App from './pages/App/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom'
 import { createRoot } from 'react-dom/client';
+import './fonts/AsSeenOnTV.ttf';
+
 
 const root = createRoot(
   document.getElementById('root')

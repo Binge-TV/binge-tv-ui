@@ -13,7 +13,6 @@ function App() {
   const [navItems] = useState([
     { url: "/", name: "Log Out" },
     { url: "/show-search", name: "Search Shows" },
-   
     { url: "/home", name: "Home Page" },
    
   ])
@@ -22,7 +21,7 @@ function App() {
     
 		<Routes> 
       <Route path='/' element={<LandingPage />} />
-      <Route path='/home' element={<HomePage />} />
+      <Route path='/home' element={<HomePage navItems={navItems}/>} />
       <Route path='/login' element={<LoginForm />} />
       <Route path='/sign-up' element={<SignupForm />} />
       <Route path="/show-search" element={<ShowSearch navItems={navItems}/>} />
