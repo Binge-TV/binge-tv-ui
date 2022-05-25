@@ -1,0 +1,24 @@
+.Nav-logo {
+    margin-top: 10vh;
+    margin-left: 20vw;
+    width: 60vw;
+    height: 40vh;
+    
+}
+
+.button {
+    border: 3px solid #bacddc;
+    margin-top: 5vh;
+    padding: 20px 15px;
+    font-size:x-large;
+    background-color: #fee8ea;
+    /* display: flex; */
+    align-items: center;
+    color: #f09494;
+    text-decoration: none;
+}
+
+.btn-container {
+    justify-content: space-around;
+    display: flex;
+}

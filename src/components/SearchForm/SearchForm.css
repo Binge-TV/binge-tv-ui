@@ -1,0 +1,19 @@
+.search-container {
+    width: fit-content;
+    height:fit-content;
+    display: flex;
+    justify-content: center;
+    border: 3px solid #bacddc;
+    margin: auto;
+    height: 55px;
+}
+
+input {
+    padding: 0;
+    background-color: #fee8ea;
+    color: #f09494;
+    font-size: 22px;
+    width: 300px;
+    height: 100%;
+    border: none;
+}
