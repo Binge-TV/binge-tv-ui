@@ -25,7 +25,7 @@ function App() {
       <Route path='/login' element={<LoginForm />} />
       <Route path='/sign-up' element={<SignupForm />} />
       <Route path="/show-search" element={<ShowSearch navItems={navItems}/>} />
-      <Route path="show/:showName" element={<ShowDetails navItems={navItems}/>} />
+      <Route path="show/:showId" element={<ShowDetails navItems={navItems}/>} />
 		</Routes>
 	</>
   );

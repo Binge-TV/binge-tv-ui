@@ -2,13 +2,14 @@ import { useState } from "react";
 import './SearchForm.css'
 
 const SearchForm = (props) => {
-    const [formData, setForData] = useState({query: ''})
+    const [formData, setFormData] = useState({query: ''})
 
     const handleChange = (evt) => {
-        setForData({ ...formData, [evt.target.name]: evt.target.value })
+        setFormData({ ...formData, [evt.target.name]: evt.target.value })
     }
 
     const handleSubmit = evt => {
+      
         evt.preventDefault()
         props.handleShowSearch(formData)
       }

@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getShowDetails } from '../../services/api-calls';
+import ApiService from '../../services/ApiService';
 import NavBar from '../../components/NavBar/NavBar';
 import './ShowDetails.css'
 
 const ShowDetails = (props) => {
     const [showDetails, setShowDetails] = useState({})
-    const { showName } = useParams()
+    const { showId } = useParams()
 
     useEffect(()=> {
-        getShowDetails(showName)
-        .then(showData => setShowDetails(showData))
-    },[showName])
+        ApiService.searchApiById(showId)
+        .then(res => {
+            console.log("SHOW",showId)
+            setShowDetails(res.data)
+            console.log("RESPONSE",res.data)
+        }).catch(err => {
+            console.log(err)
+        })
+       
+    },[showId])
 
     return ( 
         <>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SearchForm from "../../components/SearchForm/SearchForm";
-import { showSearch } from "../../services/api-calls";
+import ApiService from "../../services/ApiService";
 import ShowCard from "../../components/ShowCard/ShowCard";
 import NavBar from "../../components/NavBar/NavBar";
 import './ShowSearch.css'
@@ -9,9 +9,12 @@ const ShowSearch = (props) => {
     const [shows, setShows] = useState([])
 
     const handleShowSearch = formData => {
-        showSearch(formData)
-        .then(showResults => {
-            setShows(showResults.results)
+        ApiService.searchApiByName(formData.query)
+        .then(res => {
+            setShows(res.data.results)
+            console.log("RESPONSE",res.data.results)
+        }).catch(err => {
+            console.log(err)
         })
     }
     return ( 
