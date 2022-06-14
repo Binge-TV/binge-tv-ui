@@ -5,14 +5,14 @@ import AuthService from "../../services/AuthService";
 const LoginForm = props => {
   
   const [formData, setFormData] = useState({ 
-    email: "",
+    username: "",
     password: "",
    });
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
 
   // const userValidation = () => {
-    //checks for email pattern to be correct ie cory@cory.com
+    //checks for username pattern to be correct ie cory@cory.com
     //then pseudo logs in user to site using navigate hooks to search page
   //   const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
   //   if (regEx.test(formData.email) && formData.password !== "") {
@@ -40,7 +40,7 @@ const LoginForm = props => {
     try {
       await AuthService.login(formData)
       props.handleSignupOrLogin();
-      navigate('/')
+      navigate('/home')
     } catch (err) {
       props.updateMessage(err.message)
     }
@@ -55,20 +55,20 @@ const LoginForm = props => {
           </tr>
           <tr>
             <td>
-              <label htmlFor="">Email:</label>{" "}
+              <label htmlFor="username">Username :</label>{" "}
             </td>
             <td>
               <input
-                name="email"
-                type="email"
+                name="username"
+                type="username"
                 autoComplete="disabled"
-                value={formData.email}
+                value={formData.username}
                 onChange={handleChange}
               />
             </td>
           </tr>
           <td>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password :</label>
           </td>
           <td>
             <input

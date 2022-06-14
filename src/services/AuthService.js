@@ -5,17 +5,15 @@ const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/v1/auth`;
 class AuthService {
   async signup(user) {
     try {
-      const res = await axios.post(`${BASE_URL}/signup`, {
-        headers: new Headers({ "Content-Type": "application/json" }),
-        body: JSON.stringify(user),
+      await axios.post(`${BASE_URL}/signup`, user).then((res) => {
+        console.log("TOKEN", res);
+        if (res.token) {
+          TokenService.setToken(res.token);
+        }
+        if (res.err) {
+          throw new Error(res.err);
+        }
       });
-      const json = await res.json();
-      if (json.token) {
-        TokenService.setToken(json.token);
-      }
-      if (json.err) {
-        throw new Error(json.err);
-      }
     } catch (err) {
       console.log(err);
       throw err;
@@ -32,18 +30,16 @@ class AuthService {
 
   async login(credentials) {
     try {
-      const res = await axios.post(`${BASE_URL}/login`, {
-        headers: new Headers({ "Content-Type": "application/json" }),
-        body: JSON.stringify(credentials),
+      await axios.post(`${BASE_URL}/login`, credentials).then((res) => {
+        if (res.token) {
+          TokenService.setToken(res.token);
+        }
+        if (res.err) {
+          throw new Error(res.err);
+        }
       });
-      const json = await res.json();
-      if (json.token) {
-        TokenService.setToken(json.token);
-      }
-      if (json.err) {
-        throw new Error(json.err);
-      }
     } catch (err) {
+      console.log(err);
       throw err;
     }
   }

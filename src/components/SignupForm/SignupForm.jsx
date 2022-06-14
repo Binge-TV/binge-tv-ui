@@ -5,7 +5,7 @@ import AuthService from "../../services/AuthService";
 const SignupForm = props => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
     passwordConf: "",
@@ -34,12 +34,12 @@ const SignupForm = props => {
     }
   };
 
-  const { name, gender, email, password, passwordConf } = formData;
+  const { username, gender, email, password, passwordConf } = formData;
 
   const isFormInvalid = () => {
     //checks to make sure all fields are filled and password matches confirmation
     //used to keep button disabled until all match
-    return !(name && gender && email && password && password === passwordConf);
+    return !(username && gender && email && password && password === passwordConf);
   };
 
   return (
@@ -51,15 +51,15 @@ const SignupForm = props => {
           </tr>
           <tr>
             <td>
-              <label htmlFor="name">Name</label>{" "}
+              <label htmlFor="username">Name</label>{" "}
             </td>
             <td>
               <input
                 type="text"
                 autoComplete="disabled"
-                id="name"
-                value={name}
-                name="name"
+                id="username"
+                value={username}
+                name="username"
                 onChange={handleChange}
               />
             </td>
