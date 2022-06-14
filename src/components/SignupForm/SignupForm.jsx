@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import AuthService from "../../services/AuthService";
 
-const SignupForm = (props) => {
+const SignupForm = props => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -9,7 +12,8 @@ const SignupForm = (props) => {
     gender: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = e => {
+    props.updateMessage('')
     //changing form values based on the event target
     setFormData({
       //spread operator to preserve the value of forms while updating values in state
@@ -18,9 +22,16 @@ const SignupForm = (props) => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     //nothing here yet will change when connected to back end
     e.preventDefault();
+    try {
+      await AuthService.signup(formData)
+      props.handleSignupOrLogin()
+      navigate('/')
+    } catch (err) {
+      props.updateMessage(err.message)
+    }
   };
 
   const { name, gender, email, password, passwordConf } = formData;
@@ -125,7 +136,9 @@ const SignupForm = (props) => {
               <button disabled={isFormInvalid()}>Sign Up</button>
             </td>
             <td>
-              <button onClick={() => window.location.reload()}>Cancel</button>
+              <Link to='/'>
+              <button>Cancel</button>
+              </Link>
             </td>
           </tr>
         </table>

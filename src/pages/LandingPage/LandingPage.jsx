@@ -1,12 +1,10 @@
-import { useState } from "react";
-import LoginForm from "../../components/LoginForm/LoginForm";
-import SignupForm from "../../components/SignupForm/SignupForm";
+import { useNavigate } from 'react-router-dom';
 import './LandingPage.css'
 
 
 const LandingPage = () => {
-    const[isLogin, setIsLogin] = useState(false)
-    const [isSignup, setIsSignup] = useState(false)
+        const navigate = useNavigate();
+   
     return ( 
         <>
         <div className="logo-container">
@@ -19,10 +17,8 @@ const LandingPage = () => {
         </div>
                 {/* dynamically renders login and signup forms upon button press by setting state to display component */}
                 <div className="button-container">
-                {(isLogin) ? <LoginForm isLogin={isLogin}
-                setIsLogin={setIsLogin}/> : <button onClick={() => setIsLogin(!isLogin)}>Login</button>} 
-                {(isSignup) ?  <SignupForm isSignup={isSignup}
-                setIsSignup={isSignup}/> :<button onClick={() => setIsSignup(!isSignup)}>Sign Up</button> }
+                        <button onClick={() => navigate('/login')}>Login</button>
+                        <button onClick={() => navigate('/signup')}>Sign Up</button> 
                 </div>
         </>
      );

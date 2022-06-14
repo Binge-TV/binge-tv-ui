@@ -19,7 +19,7 @@ const ShowSearch = (props) => {
     }
     return ( 
         <>
-        <NavBar navItems={props.navItems} />
+        <NavBar handleLogout={props.handleLogout} user={props.user} navItems={props.navItems} />
         {/* <h3>TV Shows</h3> */}
         <SearchForm handleShowSearch={handleShowSearch} />
         {shows.length ? 

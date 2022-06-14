@@ -22,7 +22,7 @@ const ShowDetails = (props) => {
 
     return ( 
         <>
-        <NavBar navItems={props.navItems}/>
+        <NavBar handleLogout={props.handleLogout} user={props.user} navItems={props.navItems}/>
             <div className='show-details'>
             { showDetails.name ?
             <>
