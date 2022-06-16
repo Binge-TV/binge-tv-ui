@@ -21,10 +21,10 @@ const App = () => {
     { url: "/profiles", name: "Profile" }
   ])
 
-  const handleLogout = () => {
+  const  handleLogout = () => {
     AuthService.logout();
     setUser(null);
-    navigate('/');
+   
   }
 
   const handleSignupOrLogin = () => {
@@ -51,7 +51,8 @@ const App = () => {
       <Route 
         path="show/:showId" 
         element={<ShowDetails handleLogout={handleLogout} user={user} navItems={navItems}/>} />
-      <Route path='/profiles' element={ user ? <Profiles /> : <Navigate to='/login' />} />
+      <Route 
+        path='/profiles' element={ user ? <Profiles /> : <Navigate to='/login' />} />
 		</Routes>
 	</>
   );

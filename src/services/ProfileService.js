@@ -5,10 +5,16 @@ const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/v1/profiles`;
 
 class ProfileService {
   async getAllProfiles() {
-    const res = await axios.get(BASE_URL, {
-      headers: { Authorization: `Bearer ${TokenService.getToken()}` },
-    });
-    return await res.json();
+    await axios
+      .get(BASE_URL, {
+        headers: { Authorization: `Bearer ${TokenService.getToken()}` },
+      })
+      .then((res) => {
+        return res.data();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 

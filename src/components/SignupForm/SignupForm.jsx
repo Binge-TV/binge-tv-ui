@@ -1,30 +1,28 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../../services/AuthService";
+import styles from './SignupForm.module.css'
+
 
 const SignupForm = props => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    passwordConf: "",
-    gender: "",
-  });
+    username: '',
+    email: '',
+    password: '',
+    passwordConf: '',
+  })
 
   const handleChange = e => {
     props.updateMessage('')
-    //changing form values based on the event target
     setFormData({
-      //spread operator to preserve the value of forms while updating values in state
       ...formData,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = async e => {
-    //nothing here yet will change when connected to back end
-    e.preventDefault();
+    e.preventDefault()
     try {
       await AuthService.signup(formData)
       props.handleSignupOrLogin()
@@ -32,119 +30,76 @@ const SignupForm = props => {
     } catch (err) {
       props.updateMessage(err.message)
     }
-  };
+  }
 
-  const { username, gender, email, password, passwordConf } = formData;
+  const { username, email, password, passwordConf } = formData
 
   const isFormInvalid = () => {
-    //checks to make sure all fields are filled and password matches confirmation
-    //used to keep button disabled until all match
-    return !(username && gender && email && password && password === passwordConf);
-  };
+    return !(username && email && password && password === passwordConf)
+  }
 
   return (
-    <div>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <table>
-          <tr>
-            <th>Sign Up</th>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="username">Name</label>{" "}
-            </td>
-            <td>
-              <input
-                type="text"
-                autoComplete="disabled"
-                id="username"
-                value={username}
-                name="username"
-                onChange={handleChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="gender">Gender</label>
-            </td>
-            <td>
-              <select
-                autoComplete="disabled"
-                type="text"
-                id="gender"
-                name="gender"
-                onChange={handleChange}
-              >
-                <option value="none" selected disabled hidden>
-                  Select a Gender
-                </option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Non-Binary">Non-Binary</option>
-                <option value="Genderfluid">Genderfluid</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="email">Email</label>
-            </td>
-            <td>
-              <input
-                type="text"
-                autoComplete="disabled"
-                id="email"
-                value={email}
-                name="email"
-                onChange={handleChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="password">Password</label>
-            </td>
-            <td>
-              <input
-                type="password"
-                autoComplete="disabled"
-                id="password"
-                value={password}
-                name="password"
-                onChange={handleChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="confirm">Confirm Password</label>
-            </td>
-            <td>
-              <input
-                type="password"
-                autoComplete="disabled"
-                id="confirm"
-                value={passwordConf}
-                name="passwordConf"
-                onChange={handleChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button disabled={isFormInvalid()}>Sign Up</button>
-            </td>
-            <td>
-              <Link to='/'>
-              <button>Cancel</button>
-              </Link>
-            </td>
-          </tr>
-        </table>
-      </form>
-    </div>
-  );
-};
+    <form
+      autoComplete="off"
+      onSubmit={handleSubmit}
+      className={styles.container}
+    >
+      <div className={styles.inputContainer}>
+        <label htmlFor="username" className={styles.label}>Username</label>
+        <input
+          type="text"
+          autoComplete="off"
+          id="username"
+          value={username}
+          name="username"
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="email" className={styles.label}>Email</label>
+        <input
+          type="text"
+          autoComplete="off"
+          id="email"
+          value={email}
+          name="email"
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="password" className={styles.label}>Password</label>
+        <input
+          type="password"
+          autoComplete="off"
+          id="password"
+          value={password}
+          name="password"
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="confirm" className={styles.label}>
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          autoComplete="off"
+          id="confirm"
+          value={passwordConf}
+          name="passwordConf"
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <button disabled={isFormInvalid()} className={styles.button}>
+          Sign Up
+        </button>
+        <Link to="/">
+          <button>Cancel</button>
+        </Link>
+      </div>
+    </form>
+  )
+}
 
-export default SignupForm;
+export default SignupForm

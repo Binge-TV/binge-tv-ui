@@ -1,45 +1,25 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../../services/AuthService";
+import styles from './LoginForm.module.css'
 
 const LoginForm = props => {
-  
-  const [formData, setFormData] = useState({ 
-    username: "",
-    password: "",
-   });
-  const navigate = useNavigate();
-  const [message, setMessage] = useState("");
-
-  // const userValidation = () => {
-    //checks for username pattern to be correct ie cory@cory.com
-    //then pseudo logs in user to site using navigate hooks to search page
-  //   const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
-  //   if (regEx.test(formData.email) && formData.password !== "") {
-  //     setMessage("Welcome to Binged [TV]");
-  //     navigate("/show-search");
-  //   } else if (!regEx.test(formData.email) && formData.email !== "") {
-  //     setMessage("Email is Not Valid");
-  //   } else {
-  //     setMessage("");
-  //   }
-  // };
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  })
+  const navigate = useNavigate()
 
   const handleChange = e => {
     props.updateMessage('')
-    //changing form values based on the event target
-    setFormData({
-      //spread operator to preserve the value of forms while updating values in state
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-//re uses the handle submit function passed down thru props
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
   const handleSubmit = async e => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       await AuthService.login(formData)
-      props.handleSignupOrLogin();
+      props.handleSignupOrLogin()
       navigate('/home')
     } catch (err) {
       props.updateMessage(err.message)
@@ -47,51 +27,42 @@ const LoginForm = props => {
   }
 
   return (
-    <>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <table>
-          <tr>
-            <th>Login</th>
-          </tr>
-          <tr>
-            <td>
-              <label htmlFor="username">Username :</label>{" "}
-            </td>
-            <td>
-              <input
-                name="username"
-                type="username"
-                autoComplete="disabled"
-                value={formData.username}
-                onChange={handleChange}
-              />
-            </td>
-          </tr>
-          <td>
-            <label htmlFor="password">Password :</label>
-          </td>
-          <td>
-            <input
-              name="password"
-              type="password"
-              autoComplete="disabled"
-              value={formData.password}
-              onChange={handleChange}
-            />
-          </td>
-          <tr>
-            <button>Log in</button>
-            <Link to='/'>
-              <button>Cancel</button>
-            </Link>
-          </tr>
-          <tr>
-            <p className="message">{message}</p>
-          </tr>
-        </table>
-      </form>
-    </>
-  );
-};
+    <form
+      autoComplete="off"
+      onSubmit={handleSubmit}
+      className={styles.container}
+    >
+      <div className={styles.inputContainer}>
+        <label htmlFor="username" className={styles.label}>username</label>
+        <input
+          type="text"
+          autoComplete="off"
+          id="username"
+          value={formData.username}
+          name="username"
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="password" className={styles.label}>Password</label>
+        <input
+          type="password"
+          autoComplete="off"
+          id="password"
+          value={formData.password}
+          name="password"
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <button className={styles.button}>Log In</button>
+        <Link to="/">
+          <button>Cancel</button>
+        </Link>
+      </div>
+    </form>
+  )
+}
 
-export default LoginForm;
+export default LoginForm
+

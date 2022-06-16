@@ -1,35 +1,30 @@
-import { Buffer } from "buffer";
 
 class TokenService {
 
-  setToken(token) {
-    localStorage.setItem("token", token);
+  setToken(authToken, username, refreshToken, expiresAt) {
+    localStorage.setItem("authenticationToken", authToken)
+    localStorage.setItem("username", username)
+    localStorage.setItem("refreshToken", refreshToken)
+    localStorage.setItem("expiresAt", expiresAt)
   }
 
-  getToken() {
-    let token = localStorage.getItem("token");
-    if (token) {
-      const payload = JSON.parse(Buffer.from(token.split(".")[1], "base64"));
-      if (payload.exp < Date.now() / 1000) {
-        localStorage.removeItem("token");
-        token = null;
-      }
-    } else {
-      localStorage.removeItem("token");
-    }
-    return token;
-  }
+ getToken() {
+  return localStorage.getItem("authenticationToken")
+ }
 
   getUserFromToken() {
-    const token = this.getToken();
+   const token = localStorage.getItem("username");
+   console.log("USER TOKEN", token)
     return token
-      ? JSON.parse(Buffer.from(token.split(".")[1], "base64")).user
+      ? token
       : null;
   }
 
   removeToken() {
-    localStorage.removeItem("token");
+   localStorage.removeItem("authenticationToken")
+    localStorage.removeItem("username")
+    localStorage.removeItem("refreshToken")
+    localStorage.removeItem("expiresAt");
   }
 }
-
 export default new TokenService();
