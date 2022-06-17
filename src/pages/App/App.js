@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route, useNavigate, Navigate, } from 'react-router-dom'
+import { Routes, Route, Navigate, } from 'react-router-dom'
 import './App.css';
 import ShowSearch from '../../pages/ShowSearch/ShowSearch';
 import LandingPage from '../../pages/LandingPage/LandingPage';
@@ -13,19 +13,18 @@ import Profiles from '../Profiles/Profiles';
 
 const App = () => {
   const [user, setUser] = useState(AuthService.getUser())
-  const navigate = useNavigate();
   const [navItems] = useState([
-    { url: "/", name: "Log Out" },
+    { url: "/", name: "Log Out", onClick: handleLogout },
     { url: "/show-search", name: "Search Shows" },
     { url: "/home", name: "Home Page" },
     { url: "/profiles", name: "Profile" }
   ])
 
-  const  handleLogout = () => {
-    AuthService.logout();
-    setUser(null);
-   
-  }
+  async function handleLogout() {
+    await AuthService.logout(
+      localStorage.getItem("refreshToken"),
+      localStorage.getItem("username")
+      )}
 
   const handleSignupOrLogin = () => {
     setUser(AuthService.getUser());
@@ -38,7 +37,7 @@ const App = () => {
       <Route path='/' element={<LandingPage user={user}/>} />
       <Route 
         path='/home' 
-        element={<HomePage user={user} handleLogout={handleLogout} navItems={navItems}/>} />
+        element={ user ? <HomePage user={user} handleLogout={handleLogout} navItems={navItems}/> : <Navigate to='/login' />} />
       <Route 
         path='/login' 
         element={<Login handleSignupOrLogin={handleSignupOrLogin} />} />
@@ -47,10 +46,10 @@ const App = () => {
         element={<Signup handleSignupOrLogin={handleSignupOrLogin} />} />
       <Route 
         path="/show-search" 
-        element={<ShowSearch handleLogout={handleLogout} user={user} navItems={navItems}/>} />
+        element={ user ? <ShowSearch handleLogout={handleLogout} user={user} navItems={navItems}/> : <Navigate to='/login' />} />
       <Route 
         path="show/:showId" 
-        element={<ShowDetails handleLogout={handleLogout} user={user} navItems={navItems}/>} />
+        element={ user ? <ShowDetails handleLogout={handleLogout} user={user} navItems={navItems}/> : <Navigate to='/login' />} />
       <Route 
         path='/profiles' element={ user ? <Profiles /> : <Navigate to='/login' />} />
 		</Routes>

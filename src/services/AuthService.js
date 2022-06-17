@@ -30,17 +30,19 @@ class AuthService {
     return TokenService.getUserFromToken();
   }
 
-  async logout() {
-    const refreshToken = localStorage.getItem("refreshtoken");
-    const username = localStorage.getItem("username");
+   logout(refreshToken, username) {
+ 
+    const refreshTokenResponse = {
+      refreshToken: refreshToken,
+      username: username
+    }
     try {
-      await axios.post(`${BASE_URL}/logout`, refreshToken, username)
+     axios.post(`${BASE_URL}/logout`, refreshTokenResponse)
       .then((res) => {
         console.log("TEST LOGOUT RES",res)
-        if (res.data) {
           console.log("LOGOUT DATA", res.data)
           TokenService.removeToken();
-        }
+        
         if (res.err) {
           throw new Error(res.err);
         }
@@ -55,7 +57,7 @@ class AuthService {
   async login(credentials) {
     try {
       await axios.post(`${BASE_URL}/login`, credentials).then((res) => {
-        console.log("LOGIN RES", res.data);
+        console.log("CREDENTIALS", credentials);
         if (res.data) {
           TokenService.setToken(
             res.data.authenticationToken,
