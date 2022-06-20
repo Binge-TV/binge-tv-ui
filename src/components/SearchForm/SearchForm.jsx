@@ -4,13 +4,13 @@ import './SearchForm.css'
 const SearchForm = (props) => {
     const [formData, setFormData] = useState({query: ''})
 
-    const handleChange = (evt) => {
-        setFormData({ ...formData, [evt.target.name]: evt.target.value })
+    const handleChange = e => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = evt => {
+    const handleSubmit = e => {
       
-        evt.preventDefault()
+        e.preventDefault()
         props.handleShowSearch(formData)
       }
   

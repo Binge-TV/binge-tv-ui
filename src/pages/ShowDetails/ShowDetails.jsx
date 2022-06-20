@@ -4,6 +4,7 @@ import ApiService from '../../services/ApiService';
 import NavBar from '../../components/NavBar/NavBar';
 import './ShowDetails.css'
 import { Link } from 'react-router-dom'
+import BingedListForm from '../../components/BingedListForm/BingedListForm';
 
 const ShowDetails = (props) => {
     const [showDetails, setShowDetails] = useState({})
@@ -28,6 +29,7 @@ const ShowDetails = (props) => {
             <div className='show-details'>
             { showDetails.name ?
             <>
+            {console.log("SHOWDEETS",showDetails)}
             <h1 style={{textAlign: 'center'}}>{showDetails.name}</h1>
                 {/* check for api results */}
             {showDetails.origin_country[0] ? 
@@ -39,7 +41,7 @@ const ShowDetails = (props) => {
             <img src={`https://image.tmdb.org/t/p/w500${showDetails.poster_path}`} alt={showDetails.name} />
             : <img src='/images/showPlaceHolder.png' alt={showDetails.name} />}
             <p>{showDetails.overview}</p><br/>
-            <button>Add Show to Watched List</button>
+            <BingedListForm show={showDetails}/>
             </>
             :
             <p>No Show Found</p>

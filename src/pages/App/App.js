@@ -37,7 +37,7 @@ const App = () => {
       <Route path='/' element={<LandingPage user={user}/>} />
       <Route 
         path='/home' 
-        element={ user ? <HomePage user={user} handleLogout={handleLogout} navItems={navItems}/> : <Navigate to='/login' />} />
+        element={  <HomePage user={user} handleLogout={handleLogout} navItems={navItems}/> } />
       <Route 
         path='/login' 
         element={<Login handleSignupOrLogin={handleSignupOrLogin} />} />
@@ -51,7 +51,7 @@ const App = () => {
         path="show/:showId" 
         element={ user ? <ShowDetails handleLogout={handleLogout} user={user} navItems={navItems}/> : <Navigate to='/login' />} />
       <Route 
-        path='/profiles' element={ user ? <Profiles /> : <Navigate to='/login' />} />
+        path='/profiles' element={ user ? <Profiles handleLogout={handleLogout} user={user} navItems={navItems} /> : <Navigate to='/login' />} />
 		</Routes>
 	</>
   );

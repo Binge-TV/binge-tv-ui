@@ -14,8 +14,8 @@ const LoginPage = props => {
       { localStorage.getItem("username") === "undefined" ? 
     <main className={styles.container}>
       <h1>Log In</h1>
-      <h6>Please remember to validate your email account.  An activation link was sent to the email
-        you provided</h6> 
+      <h4>User Registration Successful an email has been sent to the email provided,<br/>
+         please click activation link before attempting to login.</h4> 
       <p>{message}</p>
       <LoginForm
         {...props}

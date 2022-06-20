@@ -12,6 +12,11 @@ class ApiService {
     searchApiById(showId) {
         return axios.get(`${SHOW_API_URL}/${showId}`)
     }
+
+    addShowToBingedList(showId,formData) {
+        console.log("FORM",formData, "SHOWID", showId)
+        return axios.post(`${SHOW_API_URL}/${showId}/add`,formData)
+    }
 }
 
 export default new ApiService();
