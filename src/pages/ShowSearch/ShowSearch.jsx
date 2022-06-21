@@ -24,14 +24,20 @@ const ShowSearch = (props) => {
         <SearchForm handleShowSearch={handleShowSearch} />
         {shows.length ? 
         <> 
-         <section className="show-container" style={{margin: 'auto'}}>
+         {/* <section className="show-container" style={{margin: 'auto'}}> */}
+         <main className="bg-light">
+    <div className="container py-5 px-3">
+      <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g5 px-sm-5 px-4">
             {shows.map(show => 
             <ShowCard
                show={show}
                key={show.id}
                />
             )}
-         </section>
+            </div>
+            </div>
+            </main>
+         {/* </section> */}
             </>    
             :
             <div>

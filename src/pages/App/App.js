@@ -9,6 +9,7 @@ import Signup from '../../pages/Signup/Signup';
 import HomePage from '../HomePage/HomePage';
 import AuthService from '../../services/AuthService';
 import Profiles from '../Profiles/Profiles';
+import ProfileDetails from '../ProfileDetails/ProfileDetails';
 
 
 const App = () => {
@@ -52,6 +53,9 @@ const App = () => {
         element={ user ? <ShowDetails handleLogout={handleLogout} user={user} navItems={navItems}/> : <Navigate to='/login' />} />
       <Route 
         path='/profiles' element={ user ? <Profiles handleLogout={handleLogout} user={user} navItems={navItems} /> : <Navigate to='/login' />} />
+        <Route
+          path='profiles/:userId' 
+          element={ user ? <ProfileDetails handleLogout={handleLogout} user={user} navItems={navItems} /> :  <Navigate to='/login' />} />
 		</Routes>
 	</>
   );

@@ -11,7 +11,6 @@ class AuthService {
         if (res) {
           TokenService.setToken(
             res.data.authenticationToken,
-            res.data.username,
             res.data.refreshToken,
             res.data.expiresAt
           );
@@ -49,6 +48,7 @@ class AuthService {
     try {
       await axios.post(`${BASE_URL}/login`, credentials).then((res) => {
         if (res.data) {
+          console.log("CREDS", credentials)
           TokenService.setToken(
             res.data.authenticationToken,
             res.data.username,

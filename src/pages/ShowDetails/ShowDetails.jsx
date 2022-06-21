@@ -26,27 +26,32 @@ const ShowDetails = (props) => {
         <>
         <NavBar handleLogout={props.handleLogout} user={props.user} navItems={props.navItems}/>
         {props.user ? 
-            <div className='show-details'>
+
+            // <div className='show-details'>
+                <section className="bg-light text-secondary px-4 show-details">
             { showDetails.name ?
             <>
             {console.log("SHOWDEETS",showDetails)}
-            <h1 style={{textAlign: 'center'}}>{showDetails.name}</h1>
+            <h1 className="display-5 fw-bold  pt-2 text-center" style={{textAlign: 'center'}}>{showDetails.name}</h1>
                 {/* check for api results */}
             {showDetails.origin_country[0] ? 
             // if no origin display alt message
             <p>Country of origin: <strong>{showDetails.origin_country[0]}</strong></p> :
             <p>Country of origin: <strong>Sorry no signal</strong></p>}
             {/* if no image display default image */}
+            <div className="container py-4 ">
             {showDetails.poster_path ? 
             <img src={`https://image.tmdb.org/t/p/w500${showDetails.poster_path}`} alt={showDetails.name} />
             : <img src='/images/showPlaceHolder.png' alt={showDetails.name} />}
             <p>{showDetails.overview}</p><br/>
             <BingedListForm show={showDetails}/>
+            </div>
             </>
             :
             <p>No Show Found</p>
-            }
-            </div>
+        }
+            
+          </section>  //</div>
         : 
         <>
         <h1> Connection Lost : Please login</h1>
@@ -57,6 +62,6 @@ const ShowDetails = (props) => {
     }
         </>
        )
-}
- 
-export default ShowDetails;
+    }
+    
+    export default ShowDetails;
