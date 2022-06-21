@@ -10,14 +10,30 @@ const LoginPage = props => {
   }
 
   return (
+    <>
+      { localStorage.getItem("authenticationToken") === "undefined" ? 
     <main className={styles.container}>
       <h1>Log In</h1>
+      <h4>User Registration Successful an email has been sent to the email provided,<br/>
+         please click activation link before attempting to login.</h4> 
       <p>{message}</p>
       <LoginForm
         {...props}
         updateMessage={updateMessage}
-      />
+      /> 
     </main>
+         : 
+         <main className={styles.container}>
+         <h1>Log In</h1>
+         <p>{message}</p>
+         <LoginForm
+           {...props}
+           updateMessage={updateMessage}
+         /> 
+       </main>
+         }
+    
+    </>
   )
 }
 

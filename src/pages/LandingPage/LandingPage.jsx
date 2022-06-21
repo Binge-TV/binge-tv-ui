@@ -14,12 +14,17 @@ const LandingPage = () => {
                 className="App-logo"
                 alt="logo"
                 />
+             
         </div>
+       
                 {/* dynamically renders login and signup forms upon button press by setting state to display component */}
+              
                 <div className="button-container">
-                        <button onClick={() => navigate('/login')}>Login</button>
-                        <button onClick={() => navigate('/signup')}>Sign Up</button> 
+                       <button onClick={() => navigate('/login')}>Login</button>
+                       <button onClick={() => navigate('/signup')}>Sign Up</button>
                 </div>
+               
+                       
         </>
      );
 }

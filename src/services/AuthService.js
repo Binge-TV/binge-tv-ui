@@ -11,7 +11,6 @@ class AuthService {
         if (res) {
           TokenService.setToken(
             res.data.authenticationToken,
-            res.data.username,
             res.data.refreshToken,
             res.data.expiresAt
           );
@@ -30,33 +29,26 @@ class AuthService {
     return TokenService.getUserFromToken();
   }
 
-  async logout() {
-    const refreshToken = localStorage.getItem("refreshtoken");
-    const username = localStorage.getItem("username");
-    try {
-      await axios.post(`${BASE_URL}/logout`, refreshToken, username)
-      .then((res) => {
-        console.log("TEST LOGOUT RES",res)
-        if (res.data) {
-          console.log("LOGOUT DATA", res.data)
-          TokenService.removeToken();
-        }
-        if (res.err) {
-          throw new Error(res.err);
-        }
-      })
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
-    
+  async logout(refreshToken, username) {
+    const refreshTokenResponse = {
+      refreshToken: refreshToken,
+      username: username,
+    };
+   await axios.post(`${BASE_URL}/logout`, refreshTokenResponse).then((res) => {
+      console.log(res)
+      TokenService.removeToken();
+      if (res.err) {
+        console.log(res.err);
+        throw new Error(res.err);
+      }
+    });
   }
 
   async login(credentials) {
     try {
       await axios.post(`${BASE_URL}/login`, credentials).then((res) => {
-        console.log("LOGIN RES", res.data);
         if (res.data) {
+          console.log("CREDS", credentials)
           TokenService.setToken(
             res.data.authenticationToken,
             res.data.username,
