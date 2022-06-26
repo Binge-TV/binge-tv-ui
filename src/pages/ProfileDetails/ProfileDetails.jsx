@@ -42,13 +42,11 @@ const ProfileDetails = (props) => {
     e.preventDefault();
     try {
       await ProfileService.updateProfile(formData, parseInt(userId)).then(
-        confirmDelete
-          ? setConfirmDelete(!confirmDelete)
-          : updatePassword
+        updatePassword
           ? setUpdatePassword(!updatePassword)
           : updateProfile
           ? setUpdateProfile(!updateProfile)
-          : null
+          : false
       );
     } catch (err) {
       updateMessage(err.message);
