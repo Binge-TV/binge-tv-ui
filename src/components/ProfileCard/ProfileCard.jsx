@@ -1,7 +1,16 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const ProfileCard = (props) => {
+
+  
+
+
   return (
+    
+    
+  
     <>
     
         <div className="col">
@@ -19,14 +28,9 @@ const ProfileCard = (props) => {
               </Link>
               <div className="card-body">
                 <p className="card-title fs-5 text-dark">
-                  {props.user.username}
+                  {props.user.bio}
                 </p>
-                <p className="card-title fs-5 text-dark mb-0">
-                  {props.user.username}
-                </p>
-                <p className="card-text text-dark fs-6 mt-0">
-                  Joined: {props.user.created}
-                </p>
+
               </div>
             </div>
           </div>

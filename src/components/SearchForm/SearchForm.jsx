@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './SearchForm.css'
+import ProfileService from "../../services/ProfileService";
 
 const SearchForm = (props) => {
     const [formData, setFormData] = useState({query: ''})
@@ -13,6 +14,9 @@ const SearchForm = (props) => {
         e.preventDefault()
         props.handleShowSearch(formData)
       }
+      
+
+      
   
     return (
       <>

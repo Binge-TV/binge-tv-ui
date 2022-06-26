@@ -5,7 +5,7 @@ const NavBar = ({ user, navItems, handleLogOut }) => {
     return (  
         <>
         <header className="App-header">
-            <h1>Welcome to Binge[TV]: </h1>{user ? user : <div>Sign up to check it out"</div>}
+            <h1>Welcome to Binge[TV]: </h1>{user ? <h1> {user} </h1> : <div>Sign up to check it out"</div>}
             <div className="Nav-logo">
             <img
                 src="/images/logo.png"

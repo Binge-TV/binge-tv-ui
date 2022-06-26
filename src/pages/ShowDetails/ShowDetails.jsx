@@ -44,7 +44,9 @@ const ShowDetails = (props) => {
             <img src={`https://image.tmdb.org/t/p/w500${showDetails.poster_path}`} alt={showDetails.name} />
             : <img src='/images/showPlaceHolder.png' alt={showDetails.name} />}
             <p>{showDetails.overview}</p><br/>
-            <BingedListForm show={showDetails}/>
+            <BingedListForm show={showDetails} 
+            user={props.user}
+            />
             </div>
             </>
             :

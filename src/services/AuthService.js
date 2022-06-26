@@ -12,7 +12,8 @@ class AuthService {
           TokenService.setToken(
             res.data.authenticationToken,
             res.data.refreshToken,
-            res.data.expiresAt
+            res.data.expiresAt,
+            res.data.userId
           );
         }
         if (res.err) {
@@ -20,7 +21,7 @@ class AuthService {
         }
       });
     } catch (err) {
-      console.log(err);
+      alert(err.response.data.message);
       throw err;
     }
   }
@@ -34,13 +35,8 @@ class AuthService {
       refreshToken: refreshToken,
       username: username,
     };
-   await axios.post(`${BASE_URL}/logout`, refreshTokenResponse).then((res) => {
-      console.log(res)
+    axios.post(`${BASE_URL}/logout`, refreshTokenResponse).then(() => {
       TokenService.removeToken();
-      if (res.err) {
-        console.log(res.err);
-        throw new Error(res.err);
-      }
     });
   }
 
@@ -48,7 +44,6 @@ class AuthService {
     try {
       await axios.post(`${BASE_URL}/login`, credentials).then((res) => {
         if (res.data) {
-          console.log("CREDS", credentials)
           TokenService.setToken(
             res.data.authenticationToken,
             res.data.username,
@@ -61,7 +56,7 @@ class AuthService {
         }
       });
     } catch (err) {
-      console.log(err);
+      alert(err);
       throw err;
     }
   }

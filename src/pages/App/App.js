@@ -14,12 +14,12 @@ import ProfileDetails from '../ProfileDetails/ProfileDetails';
 
 const App = () => {
   const [user, setUser] = useState(AuthService.getUser())
+  console.log(user)
   const [navItems] = useState([
     { url: "/", name: "Log Out", onClick: handleLogout },
     { url: "/show-search", name: "Search Shows" },
-    { url: "/home", name: "Home Page" },
     { url: "/profiles", name: "Profile" }
-  ])
+  ],[user])
 
   async function handleLogout() {
     await AuthService.logout(
@@ -36,9 +36,6 @@ const App = () => {
     
 		<Routes> 
       <Route path='/' element={<LandingPage user={user}/>} />
-      <Route 
-        path='/home' 
-        element={  <HomePage user={user} handleLogout={handleLogout} navItems={navItems}/> } />
       <Route 
         path='/login' 
         element={<Login handleSignupOrLogin={handleSignupOrLogin} />} />
