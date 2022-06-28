@@ -1,10 +1,9 @@
 import axios from "axios";
 
 const SHOW_API_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/v1/shows`;
-
+// calls to back end for Shows endpoints
 class ApiService {
   searchApiByName(formData) {
-    console.log("TEST", formData);
     return axios.post(SHOW_API_URL, formData);
   }
 
@@ -13,12 +12,11 @@ class ApiService {
   }
 
   addShowToBingedList(showId, formData, user) {
-    console.log("FORM", formData, "USER ", user);
     return axios.post(`${SHOW_API_URL}/${showId}/add`, formData);
   }
 
   getAllShows() {
-    return axios.get(`${SHOW_API_URL}/index`)
+    return axios.get(`${SHOW_API_URL}/index`);
   }
 }
 

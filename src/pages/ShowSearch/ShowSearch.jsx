@@ -3,49 +3,47 @@ import SearchForm from "../../components/SearchForm/SearchForm";
 import ApiService from "../../services/ApiService";
 import ShowCard from "../../components/ShowCard/ShowCard";
 import NavBar from "../../components/NavBar/NavBar";
-import './ShowSearch.css'
+import "./ShowSearch.css";
 
 const ShowSearch = (props) => {
-    const [shows, setShows] = useState([])
+  const [shows, setShows] = useState([]);
 
-    const handleShowSearch = formData => {
-        ApiService.searchApiByName(formData.query)
-        .then(res => {
-            setShows(res.data.results)
-            console.log("RESPONSE",res.data.results)
-        }).catch(err => {
-            console.log(err)
-        })
-    }
-    return ( 
+  const handleShowSearch = (formData) => {
+    ApiService.searchApiByName(formData.query)
+      .then((res) => {
+        setShows(res.data.results);
+      })
+      .catch((err) => {
+        alert.log(err);
+      });
+  };
+  return (
+    <>
+      <NavBar
+        handleLogout={props.handleLogout}
+        user={props.user}
+        navItems={props.navItems}
+      />
+      <SearchForm handleShowSearch={handleShowSearch} />
+      {shows.length ? (
         <>
-        <NavBar handleLogout={props.handleLogout} user={props.user} navItems={props.navItems} />
-        {/* <h3>TV Shows</h3> */}
-        <SearchForm handleShowSearch={handleShowSearch} />
-        {shows.length ? 
-        <> 
-         {/* <section className="show-container" style={{margin: 'auto'}}> */}
-         <main className="bg-light">
-    <div className="container py-5 px-3">
-      <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g5 px-sm-5 px-4">
-            {shows.map(show => 
-            <ShowCard
-               show={show}
-               key={show.id}
-               />
-            )}
+          <main className="bg-light">
+            <div className="container py-5 px-3">
+              <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g5 px-sm-5 px-4">
+                {shows.map((show) => (
+                  <ShowCard show={show} key={show.id} />
+                ))}
+              </div>
             </div>
-            </div>
-            </main>
-         {/* </section> */}
-            </>    
-            :
-            <div>
-                <h3 style={{textAlign: 'center'}}>no shows found</h3>
-            </div>
-            }
+          </main>
         </>
-     );
-}
- 
+      ) : (
+        <div>
+          <h3 style={{ textAlign: "center" }}>no shows found</h3>
+        </div>
+      )}
+    </>
+  );
+};
+
 export default ShowSearch;

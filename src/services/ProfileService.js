@@ -2,7 +2,7 @@ import axios from "axios";
 import TokenService from "./TokenService";
 
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/v1/profiles`;
-
+// calls to backend for Profile endpoints
 class ProfileService {
   getAllProfiles() {
     return axios.get(BASE_URL);
@@ -13,7 +13,6 @@ class ProfileService {
   }
 
   async updateProfile(user, userId) {
-    console.log(userId);
     return axios.patch(`${BASE_URL}/${userId}`, user);
   }
 

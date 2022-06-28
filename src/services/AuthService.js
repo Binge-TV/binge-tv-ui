@@ -2,18 +2,16 @@ import axios from "axios";
 import TokenService from "./TokenService";
 
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/v1/auth`;
-
+// calls to backend for Auth endpoint
 class AuthService {
   async signup(user) {
     try {
       await axios.post(`${BASE_URL}/signup`, user).then((res) => {
-        console.log("SIGN UP RES", res);
         if (res) {
           TokenService.setToken(
             res.data.authenticationToken,
             res.data.refreshToken,
-            res.data.expiresAt,
-            res.data.userId
+            res.data.expiresAt
           );
         }
         if (res.err) {
@@ -35,8 +33,7 @@ class AuthService {
       refreshToken: refreshToken,
       username: username,
     };
-    axios.post(`${BASE_URL}/logout`, refreshTokenResponse)
-    .then(() => {
+    axios.post(`${BASE_URL}/logout`, refreshTokenResponse).then(() => {
       TokenService.removeToken();
     });
   }

@@ -1,30 +1,30 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../../services/AuthService";
-import styles from './LoginForm.module.css'
+import styles from "./LoginForm.module.css";
 
-const LoginForm = props => {
+const LoginForm = (props) => {
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  })
-  const navigate = useNavigate()
+    username: "",
+    password: "",
+  });
+  const navigate = useNavigate();
 
-  const handleChange = e => {
-    props.updateMessage('')
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+  const handleChange = (e) => {
+    props.updateMessage("");
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = async e => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      await AuthService.login(formData)
-      props.handleSignupOrLogin()
-      navigate('/show-search')
+      await AuthService.login(formData);
+      props.handleSignupOrLogin();
+      navigate("/show-search");
     } catch (err) {
-      props.updateMessage(err.message)
+      props.updateMessage(err.message);
     }
-  }
+  };
 
   return (
     <form
@@ -33,7 +33,9 @@ const LoginForm = props => {
       className={styles.container}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="username" className={styles.label}>username</label>
+        <label htmlFor="username" className={styles.label}>
+          username
+        </label>
         <input
           type="text"
           autoComplete="off"
@@ -44,7 +46,9 @@ const LoginForm = props => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
+        <label htmlFor="password" className={styles.label}>
+          Password
+        </label>
         <input
           type="password"
           autoComplete="off"
@@ -61,8 +65,7 @@ const LoginForm = props => {
         </Link>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default LoginForm
-
+export default LoginForm;

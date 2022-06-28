@@ -26,11 +26,10 @@ const ProfileDetails = (props) => {
   useEffect(() => {
     ProfileService.getProfileById(userId)
       .then((res) => {
-        console.log(res.data);
         setUserDetails(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        alert.log(err);
       });
   }, [userId]);
 
@@ -41,6 +40,7 @@ const ProfileDetails = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // resets boolean for buttons to revert to false state
       await ProfileService.updateProfile(formData, parseInt(userId)).then(
         updatePassword
           ? setUpdatePassword(!updatePassword)
@@ -94,6 +94,7 @@ const ProfileDetails = (props) => {
             <button onClick={() => setUpdateProfile(!updateProfile)}>
               Update Profile
             </button>
+            {/* checks to see what buttons were pressed to dynamically render the specific form */}
             {updatePassword ? (
               <form
                 autoComplete="off"
@@ -172,6 +173,7 @@ const ProfileDetails = (props) => {
                 Delete profile
               </button>
               {confirmDelete ? (
+                // press delete once to trigger render change so users meed to confirm deleting account
                 <>
                   <button
                     onClick={() => setConfirmDelete(!confirmDelete)}

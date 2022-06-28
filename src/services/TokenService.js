@@ -1,3 +1,5 @@
+
+// manages tokens saved in front end local storage
 class TokenService {
   setToken(authToken, username, refreshToken, expiresAt) {
     localStorage.setItem("authenticationToken", authToken);
