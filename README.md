@@ -14,14 +14,18 @@
 </div>
 
 #### Link to frontend repo
-[Binged[TV]] (https://github.com/crice802/binge-tv-frontend)
+[Binge[TV]] (https://github.com/crice802/binge-tv-frontend)
 #### Link to backend repo
-[Binged[TV]] (https://github.com/crice802/binge-tv-backend)
+[Binge[TV]] (https://github.com/crice802/binge-tv-backend)
 
 <h1>Description</h1>
 <p>Binge[TV] is a TV show tracking app, where you can search all of your favorite shows. Create a list of favorite shows you have watched, or want to watch </p>
 
-## :computer: Technologies used
+## Documentaion
+![Binge[TV] Backend API](public/images/backend-api.png)
+![Binge[TV] Entity Relationship Diagram](public/images/bingeTV-erd.png)
+
+##  Technologies used
 #### backend:
 ![SpringBoot](https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot)
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)

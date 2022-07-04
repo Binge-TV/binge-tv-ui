@@ -33,9 +33,8 @@ class AuthService {
       refreshToken: refreshToken,
       username: username,
     };
-    axios.post(`${BASE_URL}/logout`, refreshTokenResponse).then(() => {
-      TokenService.removeToken();
-    });
+    axios.post(`${BASE_URL}/logout`, refreshTokenResponse)
+    .then(TokenService.removeToken());
   }
 
   async login(credentials) {
