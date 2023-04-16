@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
+import CallBack from "../CallBack/CallBack";
 import ShowSearch from "../../pages/ShowSearch/ShowSearch";
 import LandingPage from "../../pages/LandingPage/LandingPage";
 import ShowDetails from "../../pages/ShowDetails/ShowDetails";
@@ -12,7 +13,7 @@ import ProfileDetails from "../ProfileDetails/ProfileDetails";
 
 const App = () => {
   const [user, setUser] = useState(AuthService.getUser());
-  console.log(user);
+  // console.log(user);
   const [navItems] = useState(
     [
       { url: "/", name: "Log Out", onClick: handleLogout },
@@ -36,6 +37,7 @@ const App = () => {
   return (
     <>
       <Routes>
+        <Route path="/callback" element={ <CallBack /> } />
         <Route path="/" element={<LandingPage user={user} />} />
         <Route
           path="/login"
