@@ -1,108 +1,84 @@
-import React, { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import CallBack from "../CallBack/CallBack";
 import ShowSearch from "../../pages/ShowSearch/ShowSearch";
 import LandingPage from "../../pages/LandingPage/LandingPage";
 import ShowDetails from "../../pages/ShowDetails/ShowDetails";
-import Login from "../../pages/Login/Login";
+import LoginButton from "../../components/Auth0Buttons/Login";
 import Signup from "../../pages/Signup/Signup";
-import AuthService from "../../services/AuthService";
-import Profiles from "../Profiles/Profiles";
+import { PageLoader } from "../../components/PageLoader";
 import ProfileDetails from "../ProfileDetails/ProfileDetails";
+import NavBar from "../../components/NavBar/NavBar";
+import Profile from "../Profiles/Profiile";
+
 
 const App = () => {
-  const [user, setUser] = useState(AuthService.getUser());
-  // console.log(user);
-  const [navItems] = useState(
-    [
-      { url: "/", name: "Log Out", onClick: handleLogout },
-      { url: "/show-search", name: "Search Shows" },
-      { url: "/profiles", name: "Profile" },
-    ],
-    [user]
-  );
+  const { isLoading } = useAuth0();
 
-  async function handleLogout() {
-    await AuthService.logout(
-      localStorage.getItem("refreshToken"),
-      localStorage.getItem("username")
+  if (isLoading) {
+    return (
+      <div className="page-layout">
+        <PageLoader />
+      </div>
     );
   }
 
-  const handleSignupOrLogin = () => {
-    setUser(AuthService.getUser());
-  };
 // protects front end routes with checking local storage for user then forcing routes to login if none found
   return (
     <>
       <Routes>
-        <Route path="/callback" element={ <CallBack /> } />
-        <Route path="/" element={<LandingPage user={user} />} />
+        <Route path="/" element={<LandingPage  />} />
         <Route
           path="/login"
-          element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
+          element={<LoginButton />}
         />
         <Route
           path="/signup"
-          element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
+          element={<Signup />}
         />
         <Route
           path="/show-search"
           element={
-            user ? (
               <ShowSearch
-                handleLogout={handleLogout}
-                user={user}
-                navItems={navItems}
+               
+              nav={ <NavBar /> }
               />
-            ) : (
-              <Navigate to="/login" />
-            )
+          
+              
           }
+          
         />
         <Route
           path="show/:showId"
           element={
-            user ? (
+            
               <ShowDetails
-                handleLogout={handleLogout}
-                user={user}
-                navItems={navItems}
+                
               />
-            ) : (
-              <Navigate to="/login" />
-            )
+
           }
         />
         <Route
           path="/profiles"
           element={
-            user ? (
-              <Profiles
-                handleLogout={handleLogout}
-                user={user}
-                navItems={navItems}
+              <Profile
+               
               />
-            ) : (
-              <Navigate to="/login" />
-            )
           }
         />
-        <Route
+        {/* <Route
           path="profiles/:userId"
           element={
-            user ? (
+            
               <ProfileDetails
                 handleLogout={handleLogout}
                 user={user}
                 navItems={navItems}
               />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
+          } */}
+        {/* /> */}
       </Routes>
     </>
   );

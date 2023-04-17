@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./LandingPage.css";
+import LoginButton from "../../components/Auth0Buttons/Login";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -16,8 +17,8 @@ const LandingPage = () => {
       </div>
 
       <div className="button-container">
-        <button onClick={() => navigate("/login")}>Login</button>
-        <button onClick={() => navigate("/signup")}>Sign Up</button>
+        <LoginButton />
+        {/* <button onClick={() => navigate("/signup")}>Sign Up</button> */}
       </div>
     </>
   );
