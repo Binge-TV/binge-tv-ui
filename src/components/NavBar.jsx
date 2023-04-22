@@ -1,6 +1,5 @@
-import "./NavBar.css";
 
-const NavBar = ({ user, navItems }) => {
+export const NavBar = ({ user, navItems }) => {
   return (
     <>
       <header className="App-header">
@@ -26,4 +25,4 @@ const NavBar = ({ user, navItems }) => {
   );
 };
 
-export default NavBar;
+

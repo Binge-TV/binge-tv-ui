@@ -2,9 +2,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import NavBar from "../../components/NavBar/NavBar";
-import ProfileService from "../../services/ProfileService";
-import styles from "./ProfileDetails.module.css";
+import { NavBar } from "../components/NavBar";
+import ProfileService from "../services/ProfileService";
+
 
 const ProfileDetails = (props) => {
   const [userDetails, setUserDetails] = useState([]);

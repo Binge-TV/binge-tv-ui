@@ -1,0 +1,14 @@
+import React from "react";
+import { NavBar } from "./NavBar";
+import { PageFooter } from "./Page-Footer";
+
+export const PageLayout = ({ children }) => {
+    return (
+      <div className="page-layout">
+        <NavBar />
+        <div className="page-layout__content">{children}</div>
+        <PageFooter />
+      </div>
+    );
+  };
+  

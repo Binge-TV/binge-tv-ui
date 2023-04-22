@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ApiService from "../../services/ApiService";
-import NavBar from "../../components/NavBar/NavBar";
+import { NavBar } from "../../components/NavBar";
 import "./ShowDetails.css";
 import { Link } from "react-router-dom";
 import BingedListForm from "../../components/BingedListForm/BingedListForm";

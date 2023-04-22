@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./LandingPage.css";
-import LoginButton from "../../components/Auth0Buttons/Login";
+import LoginButton from "../components/Auth0Buttons/Login";
 
 const LandingPage = () => {
   const navigate = useNavigate();

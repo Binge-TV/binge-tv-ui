@@ -1,5 +1,5 @@
 import axios from "axios";
-import TokenService from "./TokenService";
+
 
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/v1/profiles`;
 // calls to backend for Profile endpoints
@@ -19,7 +19,6 @@ class ProfileService {
   async deleteProfile(userId) {
     return axios
       .delete(`${BASE_URL}/${userId}`)
-      .then(TokenService.removeToken());
   }
 }
 

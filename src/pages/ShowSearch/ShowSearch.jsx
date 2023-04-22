@@ -2,7 +2,7 @@ import { useState } from "react";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import ApiService from "../../services/ApiService";
 import ShowCard from "../../components/ShowCard/ShowCard";
-import NavBar from "../../components/NavBar/NavBar";
+import { NavBar } from "../../components/NavBar";
 import "./ShowSearch.css";
 
 const ShowSearch = (props) => {
