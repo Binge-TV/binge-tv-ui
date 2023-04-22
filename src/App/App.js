@@ -2,16 +2,16 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import CallBack from "../CallBack/CallBack";
-import ShowSearch from "../../pages/ShowSearch/ShowSearch";
-import LandingPage from "../../pages/LandingPage/LandingPage";
-import ShowDetails from "../../pages/ShowDetails/ShowDetails";
-import LoginButton from "../../components/Auth0Buttons/Login";
-import Signup from "../../pages/Signup/Signup";
-import { PageLoader } from "../../components/PageLoader";
-import ProfileDetails from "../ProfileDetails/ProfileDetails";
-import NavBar from "../../components/NavBar/NavBar";
-import Profile from "../Profiles/Profiile";
+import CallBack from "../pages/CallBack/CallBack";
+import ShowSearch from "../pages/ShowSearch/ShowSearch";
+import LandingPage from "../pages/LandingPage/LandingPage";
+import ShowDetails from "../pages/ShowDetails/ShowDetails";
+import LoginButton from "../components/Auth0Buttons/Login";
+import Signup from "../pages/Signup/Signup";
+import { PageLoader } from "../components/PageLoader";
+import ProfileDetails from "../pages/ProfileDetails/ProfileDetails";
+import NavBar from "../components/NavBar/NavBar";
+import Profile from "../pages/Profiles/Profiile";
 
 
 const App = () => {
