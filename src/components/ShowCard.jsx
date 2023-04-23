@@ -1,4 +1,4 @@
-import "./ShowCard.css";
+
 import { Link } from "react-router-dom";
 
 const ShowCard = (props) => {

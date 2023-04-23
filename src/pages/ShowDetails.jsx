@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ApiService from "../../services/ApiService";
-import { NavBar } from "../../components/NavBar";
-import "./ShowDetails.css";
+import ApiService from "../services/BackendService";
+import { NavBar } from "../components/NavBar";
 import { Link } from "react-router-dom";
-import BingedListForm from "../../components/BingedListForm/BingedListForm";
+import BingedListForm from "../components/BingedList-Form";
 
 const ShowDetails = (props) => {
   const [showDetails, setShowDetails] = useState({});
@@ -23,7 +22,6 @@ const ShowDetails = (props) => {
   return (
     <>
       <NavBar
-        handleLogout={props.handleLogout}
         user={props.user}
         navItems={props.navItems}
       />

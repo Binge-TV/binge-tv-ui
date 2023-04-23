@@ -1,16 +1,17 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Routes, Route } from "react-router-dom";
-import  CallBack  from "../pages/CallBack";
-import ShowSearch from "../pages/ShowSearch/ShowSearch";
+import { Callback }  from "../pages/Callback";
+import ShowSearch from "../components/ShowSearch";
 import LandingPage from "../pages/LandingPage";
-import ShowDetails from "../pages/ShowDetails/ShowDetails";
-import LoginButton from "../components/Auth0Buttons/Login";
+import ShowDetails from "../pages/ShowDetails";
+import Login from "../components/Login-Button";
 import { PageLoader } from "../components/Page-Loader";
 import ProfileDetails from "../pages/ProfileDetails";
 import { NavBar } from "../components/NavBar";
-import Profile from "../pages/Profiles/Profiile";
+import Profile from "../pages/Profiile";
 import { NotFoundPage } from "../pages/NotFoundPage";
+import { AuthenticationGuard } from "../components/Authentication-Guard";
 
 
 
@@ -25,44 +26,19 @@ import { NotFoundPage } from "../pages/NotFoundPage";
     );
   }
 
-// protects front end routes with checking local storage for user then forcing routes to login if none found
   return (
     
       <Routes>
-        <Route path="/" element={<LandingPage  />} />
-        <Route
-          path="/login"
-          element={<LoginButton />}
-        />
-        <Route
-          path="/show-search"
-          element={
-              <ShowSearch
-               
-              nav={ <NavBar /> }
-              />
-          
-              
-          }
-          
-        />
-        <Route
-          path="show/:showId"
-          element={
-            
-              <ShowDetails
-                
-              />
-
-          }
-        />
+        <Route 
+          path="/" element={<LandingPage nav={ <NavBar /> } />} />
+        <Route 
+          path="/show-search" element={<ShowSearch nav={ <NavBar /> } />  }/>
+        <Route 
+          path="show/:showId" element={ <ShowDetails nav={ <NavBar /> }/> } />
         <Route
           path="/profile"
-          element={
-              <Profile
-               
-              />
-          }
+          element={<AuthenticationGuard 
+            nav={ <NavBar /> } component={Profile} />}
         />
         {/* <Route
           path="profile/:userId"
@@ -76,7 +52,7 @@ import { NotFoundPage } from "../pages/NotFoundPage";
           } */}
         {/* /> */}
 
-        <Route path="/callback" element={<CallBack />} />
+        <Route path="/callback" element={<Callback />} />
         <Route path="*" element={<NotFoundPage />} />
   
       </Routes>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ApiService from "../../services/ApiService";
+import ApiService from "../services/BackendService";
 import { useParams } from "react-router-dom";
 
 // form to add shows to Binged list hard coded form inputs with api results and current user

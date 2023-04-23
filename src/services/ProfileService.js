@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/v1/profiles`;
+const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/v2/profiles`;
 // calls to backend for Profile endpoints
 class ProfileService {
   getAllProfiles() {

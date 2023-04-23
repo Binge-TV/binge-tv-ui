@@ -1,14 +1,32 @@
 import React from 'react'
+import { useAuth0 } from "@auth0/auth0-react";
+import { PageLayout } from "../components/Page-Layout";
 import { NavBar } from "../components/NavBar";
 
-const CallBack = () => {
+export const Callback = () => {
+  const { error } = useAuth0();
+
+  if (error) {
     return (
-        <div className="page-layout">
-        <NavBar />
-        <div className="page-layout__content" />
-      </div>
-          
+      <PageLayout>
+        <div className="content-layout">
+          <h1 id="page-title" className="content__title">
+            Error
+          </h1>
+          <div className="content__body">
+            <p id="page-description">
+              <span>{error.message}</span>
+            </p>
+          </div>
+        </div>
+      </PageLayout>
     );
-}
- 
-export default CallBack;
+  }
+
+  return (
+    <div className="page-layout">
+      <NavBar />
+      <div className="page-layout__content" />
+    </div>
+  );
+};

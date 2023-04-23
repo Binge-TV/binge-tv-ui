@@ -1,6 +1,4 @@
 import { useState } from "react";
-import "./SearchForm.css";
-
 
 // uses input to send query to backend api
 const SearchForm = (props) => {

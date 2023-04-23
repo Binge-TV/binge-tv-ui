@@ -1,23 +1,47 @@
 import axios from "axios";
 
-const SHOW_API_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/v1/shows`;
-// calls to back end for Shows endpoints
-class ApiService {
-  searchApiByName(formData) {
-    return axios.post(SHOW_API_URL, formData);
-  }
+export const callExternalApi = async (options) => {
+  try {
+    const response = await axios(options.config);
+    const { data } = response;
 
-  searchApiById(showId) {
-    return axios.get(`${SHOW_API_URL}/${showId}`);
-  }
+    return {
+      data,
+      error: null,
+    };
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error;
 
-  addShowToBingedList(showId, formData, user) {
-    return axios.post(`${SHOW_API_URL}/${showId}/add`, formData);
-  }
+      const { response } = axiosError;
 
-  getAllShows() {
-    return axios.get(`${SHOW_API_URL}/index`);
-  }
-}
+      let message = "http request failed";
 
-export default new ApiService();
+      if (response && response.statusText) {
+        message = response.statusText;
+      }
+
+      if (axiosError.message) {
+        message = axiosError.message;
+      }
+
+      if (response && response.data && response.data.message) {
+        message = response.data.message;
+      }
+
+      return {
+        data: null,
+        error: {
+          message,
+        },
+      };
+    }
+
+    return {
+      data: null,
+      error: {
+        message: error.message,
+      },
+    };
+  }
+};

@@ -8,9 +8,11 @@ import "./index.css";
 const root = createRoot(document.getElementById("root"));
 
 root.render(
+  // <StrictMode>
   <Router>
     <Auth0ProviderWithNavigate>
         <App />
       </Auth0ProviderWithNavigate>
   </Router>
+  // </StrictMode>
 );

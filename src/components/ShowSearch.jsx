@@ -1,9 +1,9 @@
 import { useState } from "react";
-import SearchForm from "../../components/SearchForm/SearchForm";
-import ApiService from "../../services/ApiService";
-import ShowCard from "../../components/ShowCard/ShowCard";
-import { NavBar } from "../../components/NavBar";
-import "./ShowSearch.css";
+import SearchForm from "./SearchForm";
+import ApiService from "../services/BackendService";
+import ShowCard from "./ShowCard";
+import { NavBar } from "./NavBar";
+
 
 const ShowSearch = (props) => {
   const [shows, setShows] = useState([]);
@@ -15,14 +15,11 @@ const ShowSearch = (props) => {
       })
       .catch((err) => {
         alert.log(err);
-      });
+      },[shows]);
   };
   return (
     <>
       <NavBar
-        handleLogout={props.handleLogout}
-        user={props.user}
-        navItems={props.navItems}
       />
       <SearchForm handleShowSearch={handleShowSearch} />
       {shows.length ? (
